@@ -1,0 +1,38 @@
+.board {
+    display: grid;
+    justify-content: center;
+  background-color: rgb(26, 28, 29);
+  grid-template-rows: 150px 150px 150px;
+  grid-template-columns: 150px 150px 150px;
+  padding: 10px;
+  column-gap: 2px;
+  row-gap:2px;
+}
+.board > div {
+    background-color: #f1f1f1;
+    border: 1px solid black;
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.control {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+.player1, .player2, .start-btn, .restart-btn {
+    padding: 5px;
+    margin: 5px;
+}
+.player-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
