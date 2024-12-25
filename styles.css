@@ -1,3 +1,7 @@
+body {
+    font-family:'Courier New', Courier, monospace;
+}
+
 .board {
     display: grid;
     justify-content: center;
@@ -9,11 +13,17 @@
   row-gap:2px;
 }
 .board > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #f1f1f1;
     border: 1px solid black;
     padding: 20px;
-    font-size: 30px;
+    font-size: 50px;
     text-align: center;
+}
+.board > div:hover {
+    background-color: #FFFFE0;
 }
 h1 {
     display: flex;
