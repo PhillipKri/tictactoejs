@@ -22,15 +22,22 @@ const createPlayer = (() => {
     return {whichPlayerTurn}
 })();
 
-let gameOver = false
+
 
 const Game = (() => {
+    let gameOver = false
+    const get_gameover = () => {
+        return gameOver;
+    }
+    const set_gameover = (bool) => {
+        gameOver = bool;
+    }
 
     const gameMsg = document.querySelector(".message")
     const mark =  () => {
         Gameboard.get_board().forEach((tile) => {
             tile.addEventListener("click", () => {
-                if(tile.textContent === "" && !gameOver){
+                if(tile.textContent === "" && !get_gameover()){
                 let currentPlayer = createPlayer.whichPlayerTurn ? "X" : "O";
                 tile.textContent = currentPlayer;
                 tile.classList.add(currentPlayer);
@@ -67,7 +74,7 @@ const Game = (() => {
         for(let i = 0; i < winning_combinations.length; i++){
             const [a, b, c] = winning_combinations[i]
             if(Gameboard.get_board()[a].textContent === current && Gameboard.get_board()[b].textContent === current && Gameboard.get_board()[c].textContent === current){
-                gameOver = true
+                set_gameover(true);
                 Gameboard.get_msg().textContent = `"${current}" has won the game!`
                 return true
             }
@@ -79,7 +86,7 @@ const Game = (() => {
     }
 
 
-    return {mark, gameOver};
+    return {mark, get_gameover,set_gameover};
 })();
 
 const start_btn = document.querySelector(".start-btn");
@@ -91,7 +98,7 @@ start_btn.addEventListener("click", () => {
 const restart_btn = document.querySelector(".restart-btn");
 restart_btn.addEventListener("click", () => {
     Gameboard.reset();
-    gameOver = false
+    Game.set_gameover(false);
 });
 
 
